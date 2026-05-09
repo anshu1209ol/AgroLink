@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "tempapp",
+    "slug": "farmer-direct",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.agrolink.agroai",
+      "usesCleartextTraffic": true,
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "88e2b179-e776-44e3-95fa-4eac48dd209b"
+      }
+    },
+    "owner": "anshulsikarwar84s-organization",
+    "plugins": [
+      "expo-font",
+      "@react-native-firebase/app"
+    ]
+  }
+}

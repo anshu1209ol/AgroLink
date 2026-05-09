@@ -1,0 +1,35 @@
+# Exclude entire web app folder (has its own node_modules ~400MB)
+web-app/
+
+# Exclude root node_modules (EAS installs them on the build server)
+node_modules/
+
+# Exclude backend server
+backend/
+
+# Exclude build artifacts
+dist/
+android/
+ios/
+
+# Exclude large data files
+*.csv
+
+# Exclude git history
+.git/
+
+# Exclude local env (EAS uses its own env vars)
+.env
+.env.local
+.env.*.local
+
+# Exclude other non-native assets
+*.mp4
+# Exclude hidden agent and tool folders
+.agents/
+.claude/
+.windsurf/
+.venv/
+.idea/
+.expo/
+

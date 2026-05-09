@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    function getUserRole() {
+      return get(/databases/$(database)/documents/profiles/$(request.auth.uid)).data.role;
+    }
+
+    // Profiles
+    match /profiles/{userId} {
+      allow read: if true;
+      allow create: if isSignedIn() && isOwner(userId);
+      allow update: if isSignedIn() && isOwner(userId);
+    }
+
+    // Products
+    match /products/{productId} {
+      allow read, write: if true;
+    }
+
+    // Orders
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (resource.data.buyer_id == request.auth.uid || resource.data.farmer_id == request.auth.uid || getUserRole() == 'admin');
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && (resource.data.buyer_id == request.auth.uid || resource.data.farmer_id == request.auth.uid || getUserRole() == 'admin');
+    }
+
+    // Equipment Rentals
+    match /equipment_rentals/{equipmentId} {
+      allow read: if true;
+      allow create: if isSignedIn() && (getUserRole() == 'farmer' || getUserRole() == 'admin');
+      allow update, delete: if isSignedIn() && (resource.data.owner_id == request.auth.uid || getUserRole() == 'admin');
+    }
+
+    // Learning Modules
+    match /learning_modules/{moduleId} {
+      allow read: if true;
+      allow write: if isSignedIn() && getUserRole() == 'admin';
+    }
+  }
+}
