@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, SafeAreaView, ActivityIndicator } from 'react-native';
 import { Search, ShoppingBag, MapPin, TrendingUp, Star, Mic, Bell, Plus } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -36,6 +37,52 @@ const HomeScreen = () => {
     if (n.includes('carrot')) return '🥕';
     return '🥦';
   };
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.greeting}>Namaste, Farmer! 🙏</Text>
+            <View style={styles.locationContainer}>
+              <MapPin size={14} color="#6B7280" />
+              <Text style={styles.locationText}>Nashik, Maharashtra</Text>
+            </View>
+          </View>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity style={styles.iconButton}>
+              <Bell size={24} color="#111827" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.profileButton}>
+              <Text style={styles.profileInitial}>AS</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Search */}
+        <View style={styles.searchSection}>
+          <View style={styles.searchBar}>
+            <Search size={20} color="#9CA3AF" />
+            <Text style={styles.searchPlaceholder}>Search "Organic Tomatoes"</Text>
+            <Mic size={20} color="#2E7D32" />
+          </View>
+        </View>
+
+        {/* AI Insight Card */}
+        <LinearGradient colors={['#2E7D32', '#1B5E20']} style={styles.aiCard}>
+          <View style={styles.aiCardContent}>
+            <View style={styles.aiTag}>
+              <Star size={12} color="#FFF" />
+              <Text style={styles.aiTagText}>AI INSIGHT</Text>
+            </View>
+            <Text style={styles.aiTitle}>Smart Pricing</Text>
+            <Text style={styles.aiSubtitle}>Based on current demand in Mumbai, your tomatoes could sell for 15% more this week.</Text>
+            <TouchableOpacity style={styles.aiButton}>
+              <Text style={styles.aiButtonText}>Check Analysis</Text>
+            </TouchableOpacity>
+          </View>
+          <TrendingUp size={100} color="#FFF" style={styles.aiIllustration} />
+        </LinearGradient>
 
         {/* Categories */}
         <View style={styles.sectionHeader}>

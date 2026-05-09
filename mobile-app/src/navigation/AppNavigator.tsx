@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, ShoppingBag, User, Package, Settings, PlusCircle } from 'lucide-react-native';
+import { View, Text } from 'react-native';
 import { app as firebaseApp } from '../services/firebase';
 
 // Screens
@@ -66,4 +67,4 @@ export default function AppNavigator() {
   );
 }
 
-import { View, Text } from 'react-native';
+

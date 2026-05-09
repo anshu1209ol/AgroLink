@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions, ActivityIndicator } from 'react-native';
 import { Package, ShoppingCart, DollarSign, TrendingUp, Plus, ArrowRight, BarChart2 } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
